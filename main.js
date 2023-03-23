@@ -1,24 +1,22 @@
+let playSong
+let song
 
-// let song; 
-// let playSong;
-//^replace with anything?
-
-const clientId = "173aee69532c9bb51566030b5bf4b292";  // Are clientID, access key, authentificaiton token, consumer key, API key, and access token all the same thing?
-const clientSecret = "aaaaaaaaaa"; //Is this just supposed to be made up by me?
+// const clientId = "173aee69532c9bb51566030b5bf4b292";  // Are clientID, access key, authentificaiton token, consumer key, API key, and access token all the same thing?
+// const clientSecret = "aaaaaaaaaa"; // Unneeded
 
 const _getToken = async () => {
-    const result = await fetch(`http://api.coinlayer.com`, { //Is supposed to be /live ? or /token (as used in class example)?
-        method: 'POST',
+    const result = await fetch(`https://api.artic.edu/api/v1/artworks/127859?fields=title`, { //Is supposed to be /live ? or /token (as used in class example)?
+        method: 'GET',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded', //Where does this come from?
-            'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret)
-        },
-        body: 'grant_type=client_credentials'
+            'Content-Type' : 'application/json', // In museum API docs, this whole line is in one set of quotes, not a set for both key and value
+            // 'Authorization': 'Basic ' + btoa(clientId + ':' + clientSecret) //Delte this bc not in example in documentation?
+        }
+        // body: 'grant_type=client_credentials'  //Unnecesary bc we dont need auth?
     });
 
     // Access the data given to us by the fetch response (Promise)
     const data = await result.json();
-    return data.access_token
+    return data
 }
 
 // Function to get Song Info when image figure is clicked
@@ -33,18 +31,18 @@ const _getToken = async () => {
 
  async function clickedEvent(img_index, item_index){
      // Get Track Name
-     let track = document.getElementsByTagName('img')[img_index].attributes[2].value;
+     let track = document.getElementsByTagName('img')[img_index].attributes[1].value;
 
      // Get Token
-     let token = await _getToken();
+     let token = await _getToken(); //Do we need this if we dont need an auth token?
 
      let headers = new Headers([
          ['Content-Type', 'application/json'],
          ['Accept', 'application/json'],
-         ['Authorization', `Bearer ${token}`]
+        //  ['Authorization', `Bearer ${token}`] // Do we need this si we dont have an auth token?
      ]);
 
-     let request = new Request(`https://api.coinlayer.com/v1/search?q=${track}&type=track&limit=15`,{ //Where does this come from?
+     let request = new Request(`https://api.artic.edu/api/v1/artworks/127859?fields=title`,{ //Where does this come from?
          method: 'GET',
          headers: headers
      });
@@ -53,19 +51,19 @@ const _getToken = async () => {
 
      let response = await result.json();
 
-     console.log(response)
-     let song = response.tracks.items[item_index].preview_url
+     console.log(response);
+     let song = response.tracks
 
 
      // TODO: Add songSnippet function to play the selected song
 
     // Before we play a song, first check if playSong is True, if so then stop it
-     if (playSong){
-         stopSnippet();
-     }
-     songSnippet(song);
- }
-a
+//      if (playSong){
+//          stopSnippet();
+//      }
+//      songSnippet(song);
+//  }
+
  /**
   * @param id
   * @param event
@@ -111,6 +109,7 @@ a
           }
       }
   }
+
 
   /**
    * @param url
