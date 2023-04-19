@@ -10,37 +10,173 @@
 <body> 
     <div class="container">
         <div class="gallery"> 
-            <figure class="gallery__item gallery__item--1" id="fig1" onclick="event.stopPropagation(); getSong(this.id, event)" >
-                <img class="gallery__img" src="images/EgyptianStela.jpeg" alt="Stela of Amenemhat and Hemet">
-                <!-- https://api.artic.edu/api/v1/artworks/127859 -->
+            
+            
+            <!-- First Image -->
+
+            <figure class="gallery__item gallery__item--1">
+                <button id="myBtn" type='button'><img class="gallery__img" src="images/EgyptianStela.jpeg" alt="Stela of Amenemhat and Hemet"></button>
             </figure>
 
-            <figure class="gallery__item gallery__item--2" id="fig2" onclick="event.stopPropagation(); getSong(this.id, event)">
-                <img class="gallery__img" src="images/LoveOfWinter.jpeg" alt="Love of Winter">
-                <!-- https://api.artic.edu/api/v1/artworks/109780 -->
+            <p class="first_p"><span id="art_title"></span></p>
+
+            <script> 
+
+                const API = 'https://api.artic.edu/api/v1/artworks/127859';
+                async function getArt() { 
+                    const response = await fetch(API);
+                    const info = await response.json();
+                    const { data  } = info
+
+                    document.getElementById('art_title').textContent = data.artist_title
+                    const myBtn = document.getElementById("myBtn");
+
+                    myBtn.addEventListener("click", function(e){ 
+                        const name = alert(data.artist_title);
+                        console.log(data.artist_title)
+                });
+                }; 
+                getArt()
+
+            </script> 
+
+            <!-- Second Image -->
+
+            <figure class="gallery__item gallery__item--2">
+                <button id="myBtn2" type='button'><img class="gallery__img" src="images/LoveOfWinter.jpeg" alt="Love of Winter"></button>
             </figure>
 
-            <figure class="gallery__item gallery__item--3" id="fig3" onclick="event.stopPropagation(); getSong(this.id, event)">
-                <img class="gallery__img" src="images/NiagaraFalls.jpeg" alt="Distant View of Niagara Falls">
-                <!-- https://api.artic.edu/api/v1/artworks/90048 -->
+            <p class="first_p"><span id="art_title2"></span></p>
+
+            <script> 
+                const API2 = 'https://api.artic.edu/api/v1/artworks/109780';
+                async function getArt() { 
+                    const response = await fetch(API2);
+                    const info = await response.json();
+                    const { data  } = info
+
+                    document.getElementById('art_title2').textContent = data.artist_title
+                    const myBtn = document.getElementById("myBtn2");
+
+                    myBtn.addEventListener("click", function(e){ 
+                        const name = alert(data.artist_title);
+                        console.log(data.artist_title)
+                });
+                }; 
+                getArt()
+
+            </script>
+
+            <!-- Third Image -->
+
+            <figure class="gallery__item gallery__item--3">
+                <button id="myBtn3" type='button'><img class="gallery__img" src="images/NiagaraFalls.jpeg" alt="Distant View of Niagara Falls"></button>
             </figure>
 
-            <figure class="gallery__item gallery__item--4" id="fig4" onclick="event.stopPropagation(); getSong(this.id, event)">
-                <img class="gallery__img" src="images/ParisPointalism.jpeg" alt="A Sunday on La Grande Jatte \u2014 1884">
-                <!-- https://api.artic.edu/api/v1/artworks/27992 -->
+            <p class="first_p"><span id="art_title3"></span></p>
+
+            <script> 
+                const API3 = 'https://api.artic.edu/api/v1/artworks/90048';
+                async function getArt() { 
+                    const response = await fetch(API3);
+                    const info = await response.json();
+                    const { data  } = info
+
+                    document.getElementById('art_title3').textContent = data.artist_title
+                    const myBtn = document.getElementById("myBtn3");
+
+                    myBtn.addEventListener("click", function(e){ 
+                        const name = alert(data.artist_title);
+                        console.log(data.artist_title)
+                });
+                }; 
+                getArt()
+
+            </script>
+
+            <!-- Fourth Image -->
+
+            <figure class="gallery__item gallery__item--4">
+                <button id="myBtn4" type='button'><img class="gallery__img" src="images/ParisPointalism.jpeg" alt="A Sunday on La Grande Jatte \u2014 1884"></button>
             </figure>
 
-            <figure class="gallery__item gallery__item--5" id="fig5" onclick="event.stopPropagation(); getSong(this.id, event)">
-                <img class="gallery__img" src="images/TheGreatWave.jpeg" alt="Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series Thirty-Six Views of Mount Fuji (Fugaku sanj\u016brokkei)">
-                <!-- https://api.artic.edu/api/v1/artworks/24645 -->
+            <p class="first_p"><span id="art_title4"></span></p>
+
+            <script> 
+                const API4 = 'https://api.artic.edu/api/v1/artworks/27992';
+                async function getArt() { 
+                    const response = await fetch(API4);
+                    const info = await response.json();
+                    const { data  } = info
+
+                    document.getElementById('art_title4').textContent = data.artist_title
+                    const myBtn = document.getElementById("myBtn4");
+
+                    myBtn.addEventListener("click", function(e){ 
+                        const name = alert(data.artist_title);
+                        console.log(data.artist_title)
+                });
+                }; 
+                getArt()
+
+            </script>
+
+            <!-- Fifth Image -->
+
+            <figure class="gallery__item gallery__item--5">
+                <button id="myBtn5" type='button'><img class="gallery__img" src="images/TheGreatWave.jpeg"  alt="Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series Thirty-Six Views of Mount Fuji (Fugaku sanj\u016brokkei)"></button>
             </figure>
 
-            <figure class="gallery__item gallery__item--6" id="fig6" onclick="event.stopPropagation(); getSong(this.id, event)">
-                <img class="gallery__img" src="images/TwoSisters.jpeg" alt="Two Sisters (On the Terrace)">
-                <!-- https://api.artic.edu/api/v1/artworks/14655 -->
+            <p class="first_p"><span id="art_title5"></span></p>
+
+            <script> 
+                const API5 = 'https://api.artic.edu/api/v1/artworks/24645';
+                async function getArt() { 
+                    const response = await fetch(API5);
+                    const info = await response.json();
+                    const { data  } = info
+
+                    document.getElementById('art_title5').textContent = data.artist_title
+                    const myBtn = document.getElementById("myBtn5");
+
+                    myBtn.addEventListener("click", function(e){ 
+                        const name = alert(data.artist_title);
+                        console.log(data.artist_title)
+                });
+                }; 
+                getArt()
+
+            </script>
+
+            <!-- Sixth Image -->
+
+            <figure class="gallery__item gallery__item--6">
+                <button id="myBtn6" type='button'><img class="gallery__img" src="images/TwoSisters.jpeg"  alt="Two Sisters (On the Terrace)"></button>
             </figure>
+
+            <p class="first_p"><span id="art_title6"></span></p>
+
+            <script> 
+                const API6 = 'https://api.artic.edu/api/v1/artworks/14655';
+                async function getArt() { 
+                    const response = await fetch(API6);
+                    const info = await response.json();
+                    const { data  } = info
+
+                    document.getElementById('art_title6').textContent = data.artist_title
+                    const myBtn = document.getElementById("myBtn6");
+
+                    myBtn.addEventListener("click", function(e){ 
+                        const name = alert(data.artist_title);
+                        console.log(data.artist_title)
+                });
+                }; 
+                getArt()
+
+            </script>
         </div>
     </div>
     
 </body>
 </html>
+
